@@ -28,6 +28,8 @@ async function anniData(month: number, date: number, category: string){
       parsedData
     );
   }
+
+// api 저장
 const a = JSON.stringify(anniData(11,11,"기념일"));
 export function CalendarView() { //캘린더 출력
   return (
