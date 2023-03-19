@@ -4,11 +4,12 @@ import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import axios from 'axios';
 
 async function anniData(month: number, date: number, category: string) {
-  const getData = async (month: number, date: number, category: string) => {  // 월, 일, 기념일 or 사건
+  const getData = async (month: number=1, date: number=1, category: string) => {  // 월, 일, 기념일 or 사건
     try {
       let data = {
         "month": month,
-        "date": date
+        "date": date,
+
       }
       const response = await axios.post('https://saradan.pythonanywhere.com/api/wiki',
         data,
@@ -18,15 +19,23 @@ async function anniData(month: number, date: number, category: string) {
           }
         });
       const parsedData = await response.data[category]
+      const Data= JSON.stringify(parsedData)
+      console.log(typeof response.data.기념일);
       return (
-        parsedData
+        Data
       );
+      
     } catch (error) {
       console.error(error);
+      return (
+        "error"
+      );
     }
   }
+  //const response = await axios.get ('https://raw.githubusercontent.com/csk200387/AnniversaryNoti/main/test.json');
   let parsedData = await getData(month, date, category);
   parsedData= JSON.stringify(parsedData);
+  //const parsedData = await response.data[category][0];
   return (
     parsedData
   );
