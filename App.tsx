@@ -33,8 +33,8 @@ async function anniData(month: number, date: number, category: string) {
     }
   }
   //const response = await axios.get ('https://raw.githubusercontent.com/csk200387/AnniversaryNoti/main/test.json');
-  let parsedData = await getData(month, date, category);
-  parsedData= JSON.stringify(parsedData);
+  let parsedData = new Array(await getData(month, date, category));
+  //parsedData= JSON.stringify(parsedData);
   //const parsedData = await response.data[category][0];
   return (
     parsedData
@@ -42,7 +42,8 @@ async function anniData(month: number, date: number, category: string) {
 }
 
 // api 저장
-const a = JSON.stringify(anniData(11, 11, "기념일"));
+const data = new Array(anniData(11, 11, "기념일"));
+const dataLength = data.length ;
 export function CalendarView() { //캘린더 출력
   return (
     <SafeAreaView>
