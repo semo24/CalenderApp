@@ -3,6 +3,8 @@ import { Calendar, LocaleConfig, } from "react-native-calendars";
 import { StyleSheet, View, Text, SafeAreaView } from "react-native";
 import axios from 'axios';
 
+
+//디스코드 연동 테스트
 async function anniData(month: number, date: number, category: string) {
   const getData = async (month: number=1, date: number=1, category: string) => {  // 월, 일, 기념일 or 사건
     try {
